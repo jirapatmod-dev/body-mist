@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>รายการสั่งซื้อ | Body Scent</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---------- เฉพาะหน้า admin ---------- */
+    .page-head {
+      padding: var(--space-6) 0 var(--space-4);
+    }
+
+    .admin-section {
+      padding-bottom: var(--space-7);
+    }
+
+    #admin-status {
+      margin-bottom: var(--space-2);
+      font-size: 0.92rem;
+    }
+
+    /* ตารางกว้างเลื่อนซ้าย-ขวาในกรอบของมันเอง ไม่ให้หน้าเว็บเลื่อนด้านข้าง */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+
+    #ordersTable {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    #ordersTable th,
+    #ordersTable td {
+      padding: 0.9rem 1rem;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    #ordersTable thead th {
+      font-weight: 500;
+      white-space: nowrap;
+      background: var(--cream);
+      border-bottom-color: var(--beige-deep);
+    }
+
+    #ordersTable tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* วันเวลา และ จำนวนเงิน ไม่ตัดบรรทัด */
+    #ordersTable th:nth-child(1),
+    #ordersTable td:nth-child(1),
+    #ordersTable th:nth-child(5),
+    #ordersTable td:nth-child(5) {
+      white-space: nowrap;
+    }
+
+    #ordersTable th:nth-child(5),
+    #ordersTable td:nth-child(5) {
+      text-align: right;
+    }
+
+    @media (max-width: 640px) {
+      .page-head {
+        padding: var(--space-5) 0 var(--space-3);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Body Scent</a>
+      <nav class="nav" aria-label="เมนูหลัก">
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html">สินค้า</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1>รายการสั่งซื้อ</h1>
+        <hr class="rule">
+        <p class="lead">คำสั่งซื้อทั้งหมดจาก Google Sheet เรียงจากล่าสุดขึ้นก่อน</p>
+      </div>
+    </section>
+
+    <section class="admin-section">
+      <div class="container">
+
+        <!-- script.js แสดงสถานะการโหลดที่นี่ -->
+        <p id="admin-status" class="text-muted" role="status" hidden></p>
+
+        <div class="table-wrap">
+          <table id="ordersTable">
+            <thead>
+              <tr>
+                <th scope="col">วันเวลา</th>
+                <th scope="col">ชื่อลูกค้า</th>
+                <th scope="col">เบอร์โทร/Line</th>
+                <th scope="col">รายการสินค้า</th>
+                <th scope="col">จำนวนเงินรวม</th>
+                <th scope="col">หมายเหตุ</th>
+              </tr>
+            </thead>
+            <!-- script.js เติมแถวข้อมูลที่นี่ -->
+            <tbody id="orders-body"></tbody>
+          </table>
+        </div>
+
+        <noscript>
+          <p class="text-muted">กรุณาเปิดใช้งาน JavaScript เพื่อดูรายการสั่งซื้อ</p>
+        </noscript>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>&copy; 2026 Body Scent</span>
+      <nav class="nav" aria-label="เมนูท้ายหน้า">
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html">สินค้า</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

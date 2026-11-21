@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>สินค้าทั้งหมด | Body Scent</title>
+  <meta name="description" content="น้ำหอมฉีดตัวและโรลออน Body Scent เลือกตามอารมณ์ Fresh, Sweet, Confident และ Romance">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---------- เฉพาะหน้าสินค้า ---------- */
+    .page-head {
+      padding: var(--space-6) 0 var(--space-4);
+    }
+
+    .product-section {
+      padding-bottom: var(--space-7);
+    }
+
+    #product-status {
+      padding: var(--space-4) 0;
+    }
+
+    @media (max-width: 640px) {
+      .page-head {
+        padding: var(--space-5) 0 var(--space-3);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Body Scent</a>
+      <nav class="nav" aria-label="เมนูหลัก">
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html" aria-current="page">สินค้า</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1>สินค้าทั้งหมด</h1>
+        <hr class="rule">
+        <p class="lead">น้ำหอมฉีดตัวและโรลออน เลือกกรองตามอารมณ์ที่ใช่สำหรับคุณ</p>
+      </div>
+    </section>
+
+    <section class="product-section">
+      <div class="container">
+
+        <!-- ปุ่มกรอง: script.js สร้างปุ่มใน #mood-filters -->
+        <div id="filter-bar">
+          <div id="mood-filters" class="filters" role="group" aria-label="กรองตามอารมณ์"></div>
+        </div>
+
+        <p id="product-status" class="text-muted" role="status" hidden></p>
+
+        <!-- การ์ดสินค้า: script.js สร้างการ์ดใน #product-grid -->
+        <div id="product-list">
+          <div id="product-grid" class="grid grid--3"></div>
+        </div>
+
+        <noscript>
+          <p class="text-muted">กรุณาเปิดใช้งาน JavaScript เพื่อดูรายการสินค้า</p>
+        </noscript>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>&copy; 2026 Body Scent</span>
+      <nav class="nav" aria-label="เมนูท้ายหน้า">
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html">สินค้า</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

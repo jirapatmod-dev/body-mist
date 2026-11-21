@@ -1,0 +1,633 @@
+/* =========================================================
+   Body Scent — shared theme
+   Premium, minimal. White / cream / deep beige + bronze accent.
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+Thai:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500&display=swap");
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Base palette */
+  --white: #fdfcfa;
+  --cream: #f6f1e9;
+  --sand: #e9dfd0;
+  --beige-deep: #b9a68b;
+  --ink: #3a332b;          /* soft dark brown for text, lines */
+  --ink-soft: #6f655a;     /* secondary text */
+  --line: #d9cdbb;         /* hairline borders */
+
+  /* Accent: light bronze / gold */
+  --accent: #a78552;
+  --accent-deep: #8a6c3e;
+
+  /* Mood colors — used only as tiny touches (dots, underlines, icons) */
+  --mood-fresh: #2f5d46;
+  --mood-sweet: #7a4e8c;
+  --mood-confident: #3e5266;
+  --mood-romance: #c4666a;
+
+  /* Type */
+  --font-display: "Cormorant Garamond", "Noto Serif Thai", Georgia, serif;
+  --font-serif-th: "Noto Serif Thai", "Cormorant Garamond", Georgia, serif;
+  --font-body: "Noto Sans Thai", "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing scale (generous) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+  --space-7: 9rem;
+
+  --container: 1120px;
+  --radius: 2px;
+  --ease: 0.25s ease;
+}
+
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin: 0 0 var(--space-2);
+  max-width: 62ch;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+/* ---------- Typography ---------- */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+/* Thai headings read better in the Thai serif face */
+:lang(th) h1,
+:lang(th) h2,
+:lang(th) h3,
+:lang(th) h4 {
+  font-family: var(--font-display);
+}
+
+.lead {
+  font-family: var(--font-serif-th);
+  font-weight: 300;
+  font-size: 1.15rem;
+  line-height: 2;
+  color: var(--ink-soft);
+}
+
+.text-muted {
+  color: var(--ink-soft);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-center p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+.section {
+  padding: var(--space-7) 0;
+}
+
+.section--cream {
+  background: var(--cream);
+}
+
+.section--sand {
+  background: var(--sand);
+}
+
+.section-head {
+  margin-bottom: var(--space-5);
+}
+
+/* Thin bronze rule under section headings */
+.rule {
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: var(--space-3) 0;
+  background: var(--accent);
+  border: 0;
+}
+
+.text-center .rule {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: var(--space-5) 0;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(253, 252, 250, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-4);
+  font-size: 0.92rem;
+}
+
+.nav a {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--ease), color var(--ease);
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--accent-deep);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Buttons: thin, dark, soft ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2.25rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--ease), color var(--ease), border-color var(--ease);
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn--accent {
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+
+.btn--accent:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+.btn--solid {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn--solid:hover {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+}
+
+.btn--small {
+  padding: 0.55rem 1.4rem;
+  font-size: 0.88rem;
+}
+
+.btn--block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.btn[disabled],
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ---------- Mood touches (small dots / lines only) ---------- */
+[data-mood] {
+  --mood-color: var(--accent);
+}
+[data-mood="fresh"]     { --mood-color: var(--mood-fresh); }
+[data-mood="sweet"]     { --mood-color: var(--mood-sweet); }
+[data-mood="confident"] { --mood-color: var(--mood-confident); }
+[data-mood="romance"]   { --mood-color: var(--mood-romance); }
+
+/* small round dot */
+.mood-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+  background: var(--mood-color);
+  vertical-align: middle;
+}
+
+/* short line under a title */
+.mood-line {
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin: var(--space-2) 0;
+  background: var(--mood-color);
+}
+
+/* text label with a dot, e.g. "● Fresh" */
+.mood-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+}
+
+.mood-tag::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-right: 0.55rem;
+  border-radius: 50%;
+  background: var(--mood-color);
+}
+
+/* icon tint helper (svg / icon fonts) */
+.mood-icon {
+  color: var(--mood-color);
+  fill: currentColor;
+}
+
+/* ---------- Product cards: white, hairline border, no colored fill ---------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color var(--ease);
+}
+
+.card:hover {
+  border-color: var(--beige-deep);
+}
+
+.card__media {
+  background: var(--cream);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-3);
+}
+
+.card__title {
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+}
+
+.card__meta {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.card__desc {
+  margin: var(--space-2) 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--line);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--accent-deep);
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Filter chips (mood / type) ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color var(--ease), color var(--ease);
+}
+
+.chip:hover {
+  border-color: var(--beige-deep);
+}
+
+.chip.is-active,
+.chip[aria-pressed="true"] {
+  border-color: var(--ink);
+}
+
+/* ---------- Forms ---------- */
+.form {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 560px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: 0.8rem 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--beige-deep);
+  border-radius: 0;
+  transition: border-color var(--ease);
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-bottom-color: var(--accent-deep);
+}
+
+.textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.form-message {
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.95rem;
+  border: 1px solid var(--line);
+  background: var(--cream);
+}
+
+.form-message--error {
+  border-color: var(--mood-romance);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: var(--space-5) 0;
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* ---------- Accessibility ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .section {
+    padding: var(--space-6) 0;
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 5rem;
+  }
+
+  body {
+    font-size: 0.97rem;
+  }
+
+  .container {
+    padding: 0 var(--space-2);
+  }
+
+  .site-header .container {
+    min-height: 64px;
+  }
+
+  .nav {
+    gap: var(--space-3);
+    font-size: 0.85rem;
+  }
+
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .card__footer {
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.8rem 1.75rem;
+  }
+
+  .site-footer .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
